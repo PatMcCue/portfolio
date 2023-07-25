@@ -1,0 +1,185 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link href="portfolio.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pathway+Extreme:wght@100&family=Roboto:wght@100&family=Zilla+Slab+Highlight&display=swap" rel="stylesheet">  
+  </head>
+  
+  <body>
+  <!--Navigation Bar-->  
+    <nav class="navbar navbar-expand-lg bg-body-tertiary" style="box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.4);">
+      <div class="container-fluid">
+        <a class="navbar-brand" href=""></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#bio">Bio</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Projects
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="portfolioprojects.html#MERN-MIT">MIT MERN Bootcamp</a></li>
+                <li><a class="dropdown-item" href="portfolioprojects.html#Javascript-30">JavaScript30</a></li>
+                <li><a class="dropdown-item" href="portfolioprojects.html#Learning-Javascript">Learning Javascript</a></li>
+              </ul>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="#contact">Contact Me</a>
+            </li>
+            
+          </ul>
+          <!-- <form class="d-flex" role="search">
+            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success text-black" type="submit">Search</button>
+          </form> -->
+        </div>
+      </div>
+    </nav>
+
+<!--Profile picture and bio side-by-side-->  
+<div class="top-section">
+  <div class="container">
+    <div class="profile-wrapper">
+      <img src="profilepics/profilepic.jpeg" alt="Pat McCue, software developer" class="profile-pic">
+    </div>
+    <div class="text-wrapper">
+      <p class="heading-profile">Hello, I'm Pat McCue, a Full Stack web developer based in Helena, MT. I excel when unraveling complex problems, contributing to a team, and learning new things.</p>
+      <button onclick="location.href='portfolioprojects.html'" class="projects-button"><a href="portfolioprojects.html">View Projects</a></button>
+    </div>
+  </div>
+</div>
+
+  <!--List of languages, frameworks, and technologies I use-->
+ <div class="toolbox">
+      <h2 class="heading heading-toolbox">Toolbox</h2>
+    <div class="technologies">
+      <div class="technology">
+        <img src="logos/htmlcssjslogo.png" alt="HTML/CSS/JS">
+      </div>
+      <div class="technology">
+        <img src="logos/mongodblogo.png" alt="MongoDB">
+      </div>
+      <div class="technology">
+        <img src="logos/expresslogo.jpeg" alt="Express">
+      </div>
+      <div class="technology">
+        <img src="logos/reactlogo.png" alt="React">
+      </div>
+      <div class="technology">
+        <img src="logos/nodejslogo.png" alt="Node.Js">
+      </div>
+      <div class="technology">
+        <img src="logos/bootstraplogo.jpeg" alt="Bootstrap">
+      </div>
+      <div class="technology">
+        <img src="logos/vscodelogo.png" alt="VS Code">
+      </div>
+      <div class="technology">
+        <img src="logos/githublogo.png" alt="GitHub">
+      </div>
+      <div class="technology">
+        <img src="logos/awslogo.png" alt="AWS">
+      </div>
+      <div class="technology">
+        <img src="logos/graphqllogo.webp" alt="GraphQL">
+      </div>
+      <div class="technology">
+        <img src="logos/googlemapsicon.png" alt="GoogleMapsAPI">
+      </div>
+      <div class="technology">
+        <img src="logos/mapboxlogo.png" alt="Mapbox">
+      </div>
+      <div class="technology">
+        <img src="logos/slacklogo.webp" alt="Slack">
+      </div>
+      <div class="technology">
+        <img src="logos/kerberoslogo.png" alt="Kerberos">
+      </div>
+    </div>
+  </div>
+
+  <!--Profile video and extended bio side-by-side-->  
+  <div class="bio-section" id="bio">
+    <div class="container">
+      <iframe width="560" height="315" src="biovideocompressed.mp4" frameborder="0" allowfullscreen></iframe>
+      <div class="text-window">
+        <div class="scroll-content">
+          <p class="bio">Hello, I'm Pat McCue, an aspiring full stack web developer driven by a deep passion for tackling challenging problems and creating impactful web experiences. With a background as an accomplished educator, I bring over 10 years of experience in guiding and inspiring learners.</p>
+
+        <p class="bio">Motivated by the potential for a new challenge, I enthusiastically chose to transition from teaching to web development. I recognized an opportunity to tap into different areas of my brain and unleash my creativity, channeling it into innovative design and problem-solving within the field of web development. This exciting journey allows me to blend my passion for creativity with technical skills, resulting in unique and impactful web experiences.</p>
+
+        <p class="bio">In pursuit of my goals, I undertook the rigorous MERN MIT xPro Full Stack Web Developer Bootcamp. This comprehensive program equipped me with the necessary skills and knowledge in the MERN (MongoDB, Express.js, React, and Node.js) stack, as well as the utilization of Bootstrap for responsive web design. As part of the bootcamp, I successfully completed capstone projects, including a restaurant app and a banking app, demonstrating my ability to develop functional and user-friendly web applications.</p>
+
+        <p class="bio">Building upon my teaching background, I am eager to combine my strong communication skills, patience, and ability to work in teams with my web development expertise. I believe in creating meaningful and user-friendly web experiences that have a positive impact on people's lives. Whether it's developing intuitive user interfaces or implementing efficient backend systems, I strive to deliver high-quality work that I can be proud of.</p>
+
+        <p class="bio">In addition to my professional endeavors, I am passionate about fostering an interest in coding among young learners. To that end, I initiated a coding club for middle schoolers at a rural school where I teach. This initiative allows me to share my knowledge and enthusiasm for web development with the next generation, empowering them to explore the world of coding and technology.</p>
+
+        <p class="bio">I'm excited to embark on this new chapter as a full stack web developer, combining my teaching experience, problem-solving skills, and creativity to craft exceptional web experiences. Check out my full work on <a href="https://github.com/PatMcCue">GitHub</a>, find details on my experience and qualifications on <a href="https://www.linkedin.com/in/patrick-mccue-08ab7b47/">LinkedIn</a>, or email directly below!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!--Contact me-->
+  <div class="contact" id="contact">
+    <div class="contact-box">
+      <h2>Contact me</h2>
+      <form id="contact-form">
+        <textarea id="message" name="message" rows="6" required placeholder="Questions? Collaborate?"></textarea>
+        <button type="submit">Send Email</button>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <ul class="list-inline d-flex justify-content-center">
+            <li class="list-inline-item">
+              <a href="https://github.com/PatMcCue">
+                <img src="logos/githublogo.png" alt="GitHub" width="60" height="60">
+              </a>
+            </li>
+            <li class="list-inline-item">
+              <a href="https://www.linkedin.com/in/patrick-mccue-08ab7b47/">
+                <img class="linked-in-logo" src="logos/linkedinlogo.png" alt="LinkedIn" width="75" height="45">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </footer>
+  
+  
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+    <script src="portfolioprojects.js"></script>
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
+    

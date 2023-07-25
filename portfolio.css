@@ -1,0 +1,257 @@
+body {
+  background-color:#e8e9f6;
+  padding: 5px;
+  box-shadow: 0px 5px 5px black;
+}
+
+a {
+  text-decoration: none;
+  color: #4e54c8;
+}
+a:hover {
+  color: #babdf4;
+  cursor: pointer;
+}
+
+.top-section {
+  padding: 30vh 0px;
+  }
+
+.container {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  }
+
+.profile-pic {
+  width: 85%; /* Adjust the width as needed */
+  height: auto; /* Maintain aspect ratio */
+  margin-right: 20px; /* Adjust the spacing between the image and text */
+  margin: 20px;
+  /* border: 2px solid rgb(255, 255, 255); */
+  border-radius: 12px;
+  box-shadow: 0px 0px 5px black;
+  min-height: 250px;
+  min-width: 200px;
+  }
+  
+.heading-profile {
+  width: 75%;
+  flex-grow: 1;
+  font-family: 'Roboto', sans-serif;
+  font-size: 30px;
+  font-weight: 900;
+  color:#4e54c8;
+  }
+
+.projects-button {
+  width: 150px;
+  background: #f9ab6f;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  font-family: 'Diphylleia', serif;
+  font-size: 25px;
+  border: #fa7209 2px solid;
+  border-radius: 48px;
+  width: 450px; /* Adjust the width as needed */
+  height: 90px; /* Adjust the height as needed */
+  display: block; /* Change to block level element */
+  margin: auto; /* Center horizontally */
+  margin-top: 20px; /* Place at the vertical center */
+  margin-bottom: 30px; /* Add space between the profile picture and the button */
+  max-width: 70%
+}
+  
+.projects-button:hover {
+    background: #fa7209;
+    border-radius: 48px;
+  }
+.nav-link {
+  color: #4e54c8;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.2em;
+  }
+
+.nav-link:hover {
+  background-color: #babdf4;
+  color: white;
+}
+
+
+.nav-link:active {
+  color: black;
+  font-family: 'Roboto', sans-serif;
+}
+
+.text-black {
+  color: black;
+  border: 1px solid black;
+}
+
+.text-black:hover {
+  background-color: rgb(228, 226, 226);
+  border: 1px solid black;
+}
+
+.heading-toolbox {
+  font-size: 8em;
+  color: white;
+  text-shadow: -1px 1px 3px #fa7209;
+  letter-spacing: 10px;
+  text-align: center;
+  margin: auto;
+}
+
+@media screen and (max-width: 768px) {
+  .heading-toolbox {
+    font-size: 6em; /* Adjust the font size for smaller screens */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .heading-toolbox {
+    font-size: 4em; /* Adjust the font size for even smaller screens */
+  }
+}
+
+.toolbox {
+  margin: 20px;
+  background: linear-gradient(to bottom right, #4e54c8, #babdf4);
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px 0px #090909;
+}
+
+.technologies {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.technology {
+  flex: 0 0 calc(20% - 2px); /* One-fifth the width of the container minus the gap */
+  max-width: calc(20% - 2px); /* One-fifth the width of the container minus the gap */
+  width: 4%;
+  transform: scale(.4);
+  text-align: center;
+  box-sizing: border-box;
+  transition-duration: .25s;
+}
+
+.technology:hover {
+  transform: scale(.5);
+}
+
+.technology img:hover {
+  box-shadow: -6px 6px 6px 1px #4e54c8;
+}
+
+
+
+.technology img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 15px;
+  border: 1px solid black;
+  box-shadow: -6px 6px 6px 1px #babdf4;
+}
+
+
+@media (max-width: 768px) {
+  .technology {
+    width: 33.33%;
+  }
+}
+
+.heading {
+  grid-column: 1 / -1; /* Span across all columns */
+  font-size: 24px; /* Adjust the font size as needed */
+  margin-bottom: 10px;
+  margin-top: 40px;
+  text-align: center;
+  margin-top: 30px;;
+}
+
+.text-window {
+  height: 315px; /* Adjust the height as needed */
+  overflow: auto;
+  margin: 16px;
+  border-radius: 4px;
+}
+
+.scroll-content {
+  padding: 30px;
+}
+
+iframe {
+  border-radius: 8px;
+  box-shadow: 0px 0px 5px 0px #000000;
+}
+
+.contact-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 50vh;
+}
+
+.contact-box h2 {
+  margin-bottom: 20px;
+  color:#4e54c8;
+  font-family: 'Diphylleia', serif;
+  text-shadow: -1px -1px 0px #ffffff;
+}
+
+.contact-box form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contact-box textarea {
+  width: 400px;
+  height: 150px;
+  resize: vertical;
+  margin-bottom: 15px;
+  border: 1px solid #ffffff;
+  border-radius: 3px;
+  box-shadow: 0px 0px 1px black;
+}
+
+.contact-box textarea:active {
+  box-shadow: 0px 0px 7px black;
+}
+
+.contact-box button {
+  width: 150px;
+  background: #f9ab6f;
+  display: inline-block;
+  color: #fff;
+  text-decoration: none;
+  font-family: Sans-serif;
+  font-size: 18px;
+  border: #fa7209 2px solid;
+  border-radius: 8px;
+  margin-left: auto;
+}
+
+.contact-box button:hover {
+  background: #fa7209;
+  border-radius: 10px;
+}
+
+.footer {
+  background: linear-gradient(to bottom right, #4e54c8, #babdf4);
+  text-align: center;
+  border-radius: 0px 0px 7px 7px;
+}
+
+.linked-in-logo {
+  padding-top: 15px;
+}
+
+.col-md-6 {
+  margin-top: 2px;
+}

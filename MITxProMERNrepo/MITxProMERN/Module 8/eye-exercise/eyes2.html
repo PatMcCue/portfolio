@@ -1,0 +1,57 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="./eyes2.css" />
+  </head>
+  <body>
+    <div class="eyes">
+      <div class="eye">
+        <div class="iris">
+          <div class="pupil">
+            <div class="highlight"></div>
+          </div>
+        </div>
+      </div>
+      <div class="eye">
+        <div class="iris">
+          <div class="pupil">
+            <div class="highlight"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dropdown">
+      <select id="eyeColorSelect" onchange="changeEyeColor(this.value)">
+        <option value="">Select Eye Color</option>
+        <option value="#3366cc">Blue</option>
+        <option value="#996633">Brown</option>
+        <option value="#66cc66">Green</option>
+        <option value="#663399">Hazel</option>
+      </select>
+    </div>
+
+    <script>
+      var irisElements = document.getElementsByClassName("iris");
+      var highlightElements = document.getElementsByClassName("highlight");
+
+      function changeEyeColor(color) {
+        for (let i = 0; i < irisElements.length; i++) {
+          irisElements[i].style.backgroundColor = color;
+          highlightElements[i].style.backgroundColor = "#000";
+        }
+      }
+
+      document.onmousemove = (event) => {
+        var x = (event.clientX * 100) / window.innerWidth + "%";
+        var y = (event.clientY * 100) / window.innerHeight + "%";
+
+        for (let i = 0; i < irisElements.length; i++) {
+          irisElements[i].style.left = x;
+          irisElements[i].style.top = y;
+          highlightElements[i].style.left = x;
+          highlightElements[i].style.top = y;
+        }
+      };
+    </script>
+  </body>
+</html>

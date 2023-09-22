@@ -1,0 +1,50 @@
+<html>
+<SCRIPT>
+    var pos = 0;
+    let pageWidth = window.innerWidth;
+    let pageHeight = window.innerHeight;
+
+    const pacArray = [
+        ['PacMan1.png', 'PacMan2.png'],
+        ['PacMan3.png', 'PacMan4.png']
+    ];
+
+    var direction = 0;
+    var focus = 0;
+
+    function Run() {
+  let img = document.getElementById("PacMan");
+  let imgWidth = img.width;
+  let imgHeight = img.height;
+  focus = (focus + 1) % 2;
+  direction = checkPageBounds(direction, imgWidth, pos, pageWidth);
+  img.src = pacArray[direction][focus];
+  if (direction) {
+    pos -= 20;
+    img.style.left = pos + "px";
+  } else {
+    pos += 20;
+    img.style.left = pos + "px";
+  }
+}
+        // Use setInterval to call Run every 200 millesecs
+    setInterval(Run, 120);
+
+      // Reverse direction on hitting page bounds left/right
+      function checkPageBounds(direction, imgWidth, pos, pageWidth) {
+  if (direction == 0 && pos + imgWidth > pageWidth - 10) direction = 1;
+  if (direction == 1 && pos < 10) direction = 0;
+
+  return direction;
+}
+      // Reverse direction on hitting page bounds up/down
+
+
+
+</SCRIPT>
+
+<body>
+    <img id="PacMan" src="PacMan1.png" width='200' onclick="Run()" style="position:absolute"> </img>
+</body>
+
+</html>

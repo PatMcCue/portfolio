@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello World!</title>
+
+    <!-- don't use this in production: -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  </head>
+  <body>
+
+    <!-- target element -->
+    <div id="date"></div>
+
+    <!-- load react -->
+    <script src="https://unpkg.com/react/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom/umd/react-dom.development.js" crossorigin></script>
+  
+    <!-- load react component -->
+    <script defer type="text/babel">
+
+function showDate(date) {
+  return date.weekday + ' ' + date.month + ' ' + date.number + ', ' + date.year;
+}
+
+const date = {
+  weekday: 'Tuesday',
+  month: 'July',
+  number: '18th',
+  year: 2023
+};
+
+const style = {
+  fontFamily: 'Sans Serif',
+  color: 'black'
+};
+
+const dateDisplay = (
+  <h1 style={style}>
+    The date is {showDate(date)}
+  </h1>
+);
+
+
+  
+
+
+ReactDOM.render(
+  dateDisplay,
+  document.getElementById('date')
+);
+
+  </script>
+
+
+  </body>
+</html>

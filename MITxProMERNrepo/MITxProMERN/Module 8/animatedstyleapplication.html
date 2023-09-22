@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Grid</title>
+    <style>
+        .content {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            grid-template-rows: repeat(10, 1fr);
+            gap: 5px;
+        }
+        div {
+            padding: 10px;
+            text-align: center;
+            border-style: solid;
+            font-size: 2em;
+        }
+        .on {
+            background-color: orange;
+            position: relative;
+            overflow: hidden;
+        }
+        .on:before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background-color: rgba(255, 255, 255, 0.3);
+            transform: rotate(45deg);
+            animation: electrify 1s infinite linear;
+        }
+        @keyframes electrify {
+            0% {
+                transform: rotate(45deg) scale(1);
+                opacity: 0.5;
+            }
+            50% {
+                transform: rotate(45deg) scale(2);
+                opacity: 0;
+            }
+            100% {
+                transform: rotate(45deg) scale(1);
+                opacity: 0.5;
+            }
+        }
+    </style>
+</head>
+<body>
+    <button onclick="move()">MOVE</button>
+    <main class="content">
+    </main>
+    <script>
+        function createDivs() {
+            var container = document.querySelector('.content');
+            for (var i = 1; i <= 100; i++) {
+                var div = document.createElement('div');
+                div.textContent = i;
+                div.classList.add('hide');
+                container.appendChild(div);
+            }
+        }
+
+        function move() {
+            var divs = document.querySelectorAll('.content > div');
+            var delay = 300; // milliseconds
+
+            divs.forEach(function(div, index) {
+                setTimeout(function() {
+                    div.classList.add('on');
+                }, delay * index);
+                setTimeout(function() {
+                    div.classList.remove('on');
+                }, delay * (index + 1));
+            });
+        }
+
+        // Create divs when the page loads
+        window.addEventListener('DOMContentLoaded', function() {
+            createDivs();
+        });
+    </script>
+</body>
+</html>

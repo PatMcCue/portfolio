@@ -1,0 +1,26 @@
+.header-section {
+  display: flex;
+  flex-direction: row;
+}
+
+.bank-logo {
+  height: 5em;
+  margin-left: 55px;
+}
+
+.bank-name {
+  padding: 10px;
+  margin-top: 10px;
+  font-family: libre baskerville, sans-serif;
+  font-size: 1.8em;
+}
+
+.header-divider {
+  width: 100%;
+  background-image: linear-gradient(
+    to right,
+    rgb(125, 138, 219),
+    rgb(146, 230, 255)
+  );
+  height: 6px;
+}

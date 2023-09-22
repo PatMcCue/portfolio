@@ -1,0 +1,78 @@
+.body {
+    background-color: azure;
+}.loading-message {
+    margin-top: 50px;
+    margin-left: 100px;
+    font-size: 2em;
+    font-family: 'Hyrule', sans-serif;
+}
+
+.gradient-border {
+    border: 2px solid transparent; /* Set a transparent border initially */
+    background: linear-gradient(to bottom right, #0d9263, #ddf6ed); /* Gradient colors */
+    background-clip: content-box; /* Make the gradient appear within the border box */
+    border-radius: 10px;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: repeat(1, auto);
+    grid-template-rows: repeat(3, auto);    
+    border: 8px solid #d4ce46;
+    border-radius: 10px;
+    margin: 8px;
+    background: linear-gradient(to top, #0d9263,#4aba91);
+}
+
+.info {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    grid-template-rows: repeat(1, auto);
+    gap: 20px;
+}
+
+@font-face {
+    font-family: 'Hyrule';
+    src: url('./HyliaSerifBeta-Regular.otf') format('opentype');
+    /* Add other font properties as needed */
+  }
+
+h1 {
+    display: flex;
+    justify-content: center;
+    font-family: "Hyrule";
+    color: #0e5135;
+}
+
+
+.separator {
+    height: 2px;
+    width: 80%;
+    background-color: #d4ce46; 
+    margin: 10px auto;
+}
+
+
+.image-container {
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+img {
+    border-radius: 15%;
+    box-shadow: 0px 0px 5px #494b4b;
+    max-width: 100%;
+}
+
+.stats-container {
+    padding: 5px;
+}
+
+.stat {
+    align-items: center;
+    padding-right: 10px;
+    color: rgb(39, 39, 39);
+    /* font-family: 'Work Sans', sans-serif;
+    font-weight: 700;  */
+}

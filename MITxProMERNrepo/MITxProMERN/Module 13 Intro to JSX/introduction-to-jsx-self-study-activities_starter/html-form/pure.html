@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<head>
+  <title>Pure</title>
+</head>
+<body>
+  <select id="year">
+    <option>Freshman</option>
+    <option>Sophmore</option>
+    <option>Junior</option>
+    <option>Senior</option>    
+  </select>
+  
+  <div>Name</div>
+  <input id="name" type="text">
+  
+  <div>Email</div>
+  <input id="email" type="text">
+  
+  <div for="password">Password</div>
+  <input type="password" id="password">
+  <div for="reEnterPassword">Re-enter Password:</div> 
+  <input type="password" id="reEnterPassword" name="reEnterPassword"/>  
+  
+<div><input id="checkbox" type="checkbox">Remember me</div>
+  
+  
+  <div>
+    <input type="checkbox" id="showPasswordCheckbox" />
+    <label for="showPasswordCheckbox">Show Password</label>
+  </div>
+  <button onclick="handle()">Submit</button>    
+  <script>
+    function handle(){
+      console.log(document.getElementById('year').value);
+      console.log(document.getElementById('name').value);
+      console.log(document.getElementById('email').value);
+      console.log(document.getElementById('password').value);
+      console.log(document.getElementById('checkbox').checked);      
+    }
+
+    const passwordInput = document.getElementById('password');
+    const reEnterPasswordInput = document.getElementById('reEnterPassword');
+    const showPasswordCheckbox = document.getElementById('showPasswordCheckbox');
+    const submitButton = document.getElementById('submitBtn');
+
+    showPasswordCheckbox.addEventListener('change', function() {
+      if (showPasswordCheckbox.checked) {
+        passwordInput.type = 'text';
+        reEnterPasswordInput.type = 'text';
+      } else {
+        passwordInput.type = 'password';
+        reEnterPasswordInput.type = 'password';
+      }
+    });
+
+    submitButton.addEventListener('click', function() {
+    const password = passwordInput.value;
+    const reEnteredPassword = reEnterPasswordInput.value;
+
+    if (password === reEnteredPassword) {
+      alert('Passwords match! Proceed with submission.');
+      handle();
+    } else {
+      alert('Passwords do not match. Please re-enter the same password.');
+    }
+  });
+  </script>
+</body>
+</html>

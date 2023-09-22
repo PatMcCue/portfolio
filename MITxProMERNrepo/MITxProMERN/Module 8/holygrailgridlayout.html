@@ -1,0 +1,39 @@
+*-+
+/<DOCTYPE html>
+    <html>
+        <head>
+        <title>Holy Grail</title>
+        <style>
+            .grid {
+                display: grid;
+                grid-template-columns: 100px 1fr 100px;
+                grid-template-rows: auto 1fr auto;
+                gap: 5px;
+                height: 90vh;
+            }
+
+            header, footer {
+                grid-column: 1 / 4;
+                background: silver;
+            }
+
+            header, aside, article, footer {
+                border-style: solid;
+                font-size: 2em;
+                border-radius: 5px;
+                text-align: center;
+            }
+
+        </style>
+        </head>
+        <body>
+            <div class="grid">
+                <header>Header</header>
+                <aside>Left</aside>
+                <article>Article</article>
+                <aside>Right</aside>
+                <footer>Footer</footer>
+            </div>
+        </body>
+    </html>
+</DOCTYPE>

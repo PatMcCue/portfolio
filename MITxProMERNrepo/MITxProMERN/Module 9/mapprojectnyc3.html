@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>NYC Subway Tracker</title>
+    <style>
+      #map {
+        width: 100%;
+        height: 500px;
+      }
+    </style>
+    <script src="http://maps.google.com/maps/api/js?key=AIzaSyBMsDvs8GmTVitc-FKzVuTU4s41w4KSvaQ"></script>
+    <script>
+      function initMap() {
+        var mapOptions = {
+          zoom: 12,
+          center: { lat: 40.7128, lng: -74.0060 },
+          mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+
+        var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+        fetchSubwayData(map);
+      }
+
+      function fetchSubwayData(map) {
+        var url = "https://api-endpoint.mta.info/Dataservice/mtagtfsfeeds/nyct%2Fgtfs-nqrw";
+        var headers = new Headers();
+        headers.append("x-api-key", "9iMR0dQQAD2a7RBi4JjJk9HufGi7bodq4KMWXfhh");
+
+        fetch(url, { headers: headers })
+          .then(response => response.json())
+          .then(data => {
+            var locations = data.data;
+
+            locations.forEach(location => {
+              var icon = {
+                url: "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAoHCBIVERIVFRIYGBUYGBEYGBgYDxEYGBoYGBgZGRgYGBgcIS4lHB4rIRgYJjgmKy8xNTU1GiQ7QDs0PzA0NTEBDAwMBgYGEAYGEDEdFh0xMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMTExMf/AABEIAOEA4QMBIgACEQEDEQH/xAAcAAEBAAIDAQEAAAAAAAAAAAAAAQYHAgUIBAP/xABHEAABAgMFBQIJCQQLAQAAAAABAAIDETEEIUFhcQUGBxJRgZETIjJCUnOhsbIUIyQ0YnKT0dJDVJLBFRYXNURTY4KiwvAz/8QAFAEBAAAAAAAAAAAAAAAAAAAAAP/EABQRAQAAAAAAAAAAAAAAAAAAAAD/2gAMAwEAAhEDEQA/ANyqT6IeiZBBCcAqThipS4VSmqCk96EyUpqlLzVBZyqmZUzKAYlBR1K4l1xJuGfvKxDejf2zWXmYz56MPNa6TWn7b6DQTOi1Vt7eu2WsnwkUhhpDYS1gGYHlds0G3dr7+bPs8x4Xwjx5sKTzPoXT5R2lYhtHivFMxAszWjB0Rxcf4WyHtWtUQZTaeIO1H/4gMHRkKG32kE+1fA/evaDq2yL2RCPcumUQduzee3ilsjfiuPvX22ffnabKWtx++yG/3tWNogz+wcU7W26LChxB1AdDd/MexZZsniZYYshED4LvttDmdj207QFpVEHpqy2uHEYHw4jXtNHNe1zewhfuOpXmnZm1bRZ388CK9jseV1x+803HtWzN2uJrHlrLY0MNwEVgPIT9tlW6iY0QbKBQGei/KDFa9rXNcHNIBDgQQ4dQRgv0rogoM9En0UrcFcgghOAVJwUyCU1QUnvVmuNNVQOtUHJERBwJwCUuFUcelUpqgU1SmqU1Sl5qgUvNVcypmVwjRGsa5znBrWguJJkABeSSgkaM1jXPe4Na0EkuIAAFSStQ758QYkcug2VxZBvDn3h7/unzW+05L4N+t8X2x5hwyW2ZpuFDEI892XQdtaYegIiICIiAi5sY5xAa0uJoA0k9wX7/ANGx/wDIi/gxPyQfKi+r+jY/+RF/BifkvxiwXsMnsc09HMc09xQcEURARFUGQbrb22ixPAaeeCT48JxMsyw+Y72dVu7Ye2oNrgiJBdNtHA3OafRcMCvOK7Pd/bkaxxhFhOlQPYfJe2d7XD3GoQejsgmQXVbA23CtdnZFhGtzmkjmY7Frs/eu0pqgU1SmqU1Sl5qgUvNUAxKuZUAxKDmiIg4k96lNVSZKUvNUCl5qmZVzKmZQB1K1HxP3rMR5scF3zbCPCuB8t4/Z/dGOeizXfzeD5JZHOaZRYk2Qh0J8p/8AtF+sloYnEmZxJqgiqKIC5wITnvaxjS57iGtaBMkmgAXBZ9wisbHWyK8ibocPxJ4F55SdZAjtKC2Hhba3MDokWHDcb+STnkfeIunpNfSeE0b97Z+E/wDNbL2ttSDZYTosZ/KwdpJNA0YnJYHG4sQgTy2R5HV0RjSewTl3oMq3U3Yg2GC1oDXRiPHico5nHo3ENHRZDSq1gOLLf3N34w/Sn9rLf3N34w/JBs/Mrq9u7DgWuC6HGYDMHldIczTg5pwKwT+1ls/qbvxh+lDxZb+5u/GH6UHyDhNHl9cZ+C/81+UfhTaQ0llphvdg0scyfbfJdi3iwwkTsbuXGUZpPtCzjYG3YFsheEguMhc5pEntd0cMNaFB58t9iiQIj4cVhY9pkWmXYQRcRmF8y2lxksjOWyxgPHm+GT1bLmAOhn3latQERVB3u6G8b7DaQ8TMN0mxWek30gPSEyR2jFb+s1oZEhtexwc17Q5rhiCJgrzItncJ94pF1jiO9J8EnvfDHxDtQbSpeaq5lMypmUDMqi+9St5orXRBVURBxN16mZVzKg6lAHUq10Sui6bezafyew2iKKtY4Nze7xWe0juQae4h7a+U26JymcOFOGzp4p8d3a6fYAsYQnreVEBERAWx+DR+kWv1cP4ytcrY3Bo/SLX6uH8ZQOMlpf4ezQp+IGOfL7TnFs+5vtWuVsDjF9cs/qP+71r9AURVAUVRAWd8IrQ4W6IwHxXwnFwzY4cp/wCR71gizbhN/eR9TF97EGScZfq9kH+o/wCBakW2+Mv1eyj/AFH/AAFalQRVFEBfvYbW+DFZFYZOY5r2nMHHLBfgqg9KbJtzbRAhR2+TEY1wHSdQcwZjsX2VvNFrvhBtPms8WzuN8J3O0fYiTJ7nA962JXRAroqDPRSuis+lEHJERBxliVK6KkdyldPegV0WuuMVv5bPZ4IPlxHPOjBd7XDuWxq6LTnGC081tgswZCB7XvP6QgwBVFEBVREFWxuDR+kWv1cP4ytcLY/Br6xa/Vw/jKD8eMX1yz+o/wC71r5egt4t1LLbeUxg4PaOVr2Ok4NnORnMG/qFiFo4StMyy2OAwD4Ad7WuHuQatRbEfwotHm2qGdWPH5r8v7K7XhGg98T8kGAIs+HCu2H9tB74n5L9WcKLSTfaYY0Y8/kg12s34Tf3kfUxfexd3Z+EomOe2E9Qyzge1zz7llm7m59lsTi+GHuilvLzvfMyNQAAAKDBBjnGUfR7J61/wFakW2+Mo+j2T1r/AIFqRAVURBUURBl/C+2eD2lDaTdFY9h1lzt9rFvKui837vWjkttkf6MeATpztDvYSvSBvuCBW4USeAVyCZBByRREEInoldEropkEDILRvFN09qRB6MOCP+M/5reeQWjOKTJbUiZw4J/4y/kgxFREQVRVEBbG4NfWLX6uH8ZWuVsbg0PpFr9XD+MoNtV0SuiV0XRW/e7Z8KIYb7UwPBk4Dmdyno4tB5e1B3tdErcF+NmtTIrGvhva9jhMOa4OaRkQv3yCBkFMgmQXF72tBJIAAJJJAAAqScAg5U1Smqx+Fvns1z+RtrhlxIAMyGkmgDyOX2rvx1rP/wBcg11xlH0eyetf8BWpFtvjKPo9k9a/4FqVARFEFRFEH62V0okM9HsPc4L02w3CXQLzLYmc0WG3q9g73AL000SAA6BBcgguuxSlwqgu1Qc0REHE9EyChOASlwqgUuFVp3jBZuW2wX+nBA7WPd+oLcVNVrjjHYSbPZow8x72OOT2zHtZ7UGpURVARRVAWxuDQ+kWv1cP4ytcrYvBv6xaxOsNnxFBsbei0vh2G1PhzD2QohaRUECo0qvOhPW89Sb16eiNDgWkAtIIMxcQbiFrvaHCuA+KXQY7obCZlhhh3Lk0zHtmg+Pg3aYh+VQpkwwGPEyZNeSQZdJgexbSyC6jd3YMGxQfBQQSSeZ73SLnOlKbpewLt6aoFNVgnFu0xGWGG1pIbEiNa8gkTaGkhpyJAuyWd01Xw7X2XCtMF8GM3mY+U5GRBFC04EdUHmxb34bWmI/ZsF0QklpexpJJJY10m91OxdBD4TwhEm61PMOfkiG0PI6c85exbBsNihwYbIbGhrGNDWNGAHvKDAeMs/k9k9a/4FqVbZ4yu+YsnrH3ZclVqVBUREBERB3G59kMXaNjZ/qsedGHnPsavRFNVp/hDs8vtUWORdDZyNP2nn+TWnvC3BTVApqgurVKXmqAYlBzRREHFx6VSmqpPepTVApqul3v2Z8osFphVcWFzfvs8ZoHaJdq7ql5qmZQeXkWR7+bHNmt8VoEmRCYrPuuJJb2OmNJLHEFRRVAXabt7biWO0sjMHNIFr2TkHsNWzwwIPULq1EG97FxA2a9gJj+DOLYjIgI7QCD3r6P68bMlda2fwxP0rEtwdxWOh/KLXDDi8fNw3UDDI87x6RwGA1u7jerZWyrFZnxXWOEXXthtLT40QjxRWmJyCDtRvxssf4xn8MT9KDfjZn74yf3Yn6VoJ7pkmQEyTICQE8AOiiDfw332Z+9sn91/wClP68bMqbYz+F/6VoBEG/xvxszG2M/hf8ApX5R9/NmNaXfKmulRrWRC49nKse3BsezbbZvHskLw8OTYg5fKHmvriBfmCvp3v3AgxIBdZITYcVkyGtuEQYtP2uhQa/3z3mdbo4dylsJgLYbSZmRN73faMhdhJY8jmkEgiRBIINQRUFRAREQERZFuNsP5XbYbHNnDZ48TpytNzT94yGk0G2OH+yPk2z4YcJRIk4jxK+bvJadG8o71k9LzVAJa/8ArgrmUDMqAYlMyqL70HJFFUHAmWqUvNVTdepmUDMoOpTMpXRBh/EnYJtNkL2NnFgze0Svc27nb3CYzatHL1DXT3rRnEPdv5Jai9jZQIpLmSo19Xs/mMtEGIqqKoCz7hxuf4dzbTHb8y0zhsIPjuHnH7IPeVhFgfDbEYYrXPhggvawgOcB5szSa2dB4p2ZjWsbY4jWtADQHwwABcAB0QbJe9rQSSAACSSQAAKknALQe++8ZttqLmk+BhzbCHUXczzm4juku63s4hm1WYwIUJ8MPPjuc9pLmeiJUBNclgaAiKICKqIO03d2zEslphxmXgEB7fTYSOZv5ZgL0Hs+2w48KHFhumx7Q5pyOGRFCvNKzDcvfd1hY+E+G6JCceZga8Asd50p4Hp11QZJxJ3P5+e2WdnjgTjMaPKA/aNHUY9RetVLbJ4swZS+SRPxIa1xt602eLHfEs8J0Jj7yxxaQ12PLLzTWWqDrlFVEFAJuAmcABMnILfO4W74sdkbzD56JJ8TqCR4rP8AaPbNYJwv3Z8NF+VRW/NQ3fNgi50QY6Nu7dFuPMoGZUzKZlK3miBW80VropXRUGeiDkiIg4nqpmVZYlSuiBXRK6JXRK6IFdF1u39kQ7XZ3wIgucJtdK9rh5LhmPzXZVuCuQQeadq7OiWaO+DFbJ7DI9CMHN6gi9fIt5b/AG6gtkHnhiVohglh9MVMM64HA6laPexzXFrgQ5pIIIkQRcQR1QcUREBERAREQRERAREQEREBdzutsF9ttLYTZhgk6I+Xksnf/uNAPyXX2CxRI8VkKEwue8yaPeT0ArNb93V3eh2KzthtvcfGiPle535CgCDs7BY2QYTIbGhrGNDWtGAHvOa+jMpmUreaIFbzRK6JXRK6IFdFZ9KKVuFEngEHJVEQcSOqldPeqRPRSuiBXRK3BK3BXIIGQUyCZBKaoFNVrjiTud4QOtdnb84BOKxo8to84D0hj1Gi2PTVKXmqDy8Cqth8R9zfBF1rs7Pm3GcVjR5BPntHonHocqa7QVERAREQRERAREQFyYwuIABJJAAAmSTcAB1XFbW4a7oeDDbZaG+Ob4LHC9oP7RwPnHDoL0Hdbg7pNscLwsVoNpeBzY+Dab/BtPXqeuizHMpmUreaIFdEroldErogV0StwolbhRXIIGQTIKZBUXXIKiqIOJE9FK3BU9EyCBkEyCZBSmqBTVKapTVKXmqBS81VzKZlMyg4PYHAhwBBBBBExI1BGK0pv/uebI8xoTSbO80/y3HzD9k4HsW7a6L8rTZmRWOY9ocxwLXNImHA9UHmRFku+u6j7DFm2brO8nwbjgbzyOzHXEdqxpAREQRERARFk25O6zrdGm6bYDCPCOFxOIY0+kfYOxB23DrdD5Q8WmO36O0+I0j/AOjwfgHtN3VbkAxPYOi4WaAxjGsY0NY0BrWgSDQKABfpW80QK6JXRK6JXRArolbhRK3CiuQQMgpkEyCUuFUClwqgu1SmqAS1Qc0REHAnAJkFSeilNUCmqU1SmqUvNUCl5qrmUzKmZQMyldEroldECuiV0SuiVuFEHybS2fDtEJ8GI0OhuEiPcWnAjqtC717uRLFHLHTdDdMw3yucOh6OGIXobILrdu7Hg2qA+BEEw6h85rsHNPUIPOCLtN4thRbHHdCiDqWPA8V7J3OH8xgV1aCIi+vZuz4loisgwm8z3mQGA6uJwA6oPr3b2FEtlobCZc24vfIyYyd5OfQYlb92RsyFZoDIMNvKxgkOpOLnHEk3r49193oVhs4hsvcb3vle53XQUAXdVvNECt5oldEroldECuiVuFErcKK5BAyCmQTIJS4VQKXCqU1SmqU1QKaoBiVcyoBiUHJFUQcSe9Smq5FQDHFBKXmquZUAxKAYlAzKVvNFZTqkp6IJXRK6K10Q9MEErcKK5BQ9ArkEEyCUuFUlKlUlLVB0+8mwINsgGFEF9WPAHMx3UZYEYhaF2zsqNZYzoMZsnNoR5Lm4OacQV6SlK/FdBvbu1CtsDkd4sVszDfLyXSoerTiO3BBoCBCc97WMaXPcQ1rQJkk0AW89xt1GWGDzPkbQ8AxHV5Rd4jT0GPU9i+DcDcn5LOPHANoMw0AzENt4JBxc7rgLuqzuU6oJW80Suisp6JXRBK6JW4UVPTBQ9AguQUyCuQSUqIJS4VSmqSlqgEtUCmquZUAxKAYlBcyg6pLqldEHJERAREQEREEVREBERAUREFREQFERBVFUQEREERVEEVREBERBFURAREQRERB//9k=", // Replace with the URL of your subway icon image
+                scaledSize: new google.maps.Size(30, 30) // Adjust the size as needed
+              };
+
+              var marker = new google.maps.Marker({
+                position: { lat: location.attributes.latitude, lng: location.attributes.longitude },
+                map: map,
+                icon: icon
+              });
+            });
+          })
+          .catch(error => {
+            console.error("Error fetching subway data:", error);
+          });
+      }
+    </script>
+  </head>
+  <body>
+    <h1>NYC Subway Tracker</h1>
+    <div id="map"></div>
+
+    <script>
+      initMap();
+    </script>
+  </body>
+</html>

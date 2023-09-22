@@ -1,0 +1,161 @@
+
+<div id="ball" style="
+  z-index:5;
+  position:relative;
+  left:7000px;
+  top:0px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background:white;
+  box-shadow: 0px 25px 25px 0px rgba(167, 170, 169, 0.75);
+  "></div>
+
+<div id="ball2" style="
+z-index:8;
+position:absolute;
+left:200px;
+top:100px;
+width:50px;
+height:50px;
+border-radius:50%;
+background:white;
+box-shadow: 0px 25px 25px 0px rgba(167, 170, 169, 0.75);
+"></div>
+
+<div id="ball3" style="
+z-index:6;
+position:absolute;
+left:200px;
+top:100px;
+width:50px;
+height:50px;
+border-radius:50%;
+background:white;
+box-shadow: 0px 25px 25px 0px rgba(167, 170, 169, 0.75);
+"></div>
+
+<audio id="tinkAudio" src="funny-sound-effect-for-quotjack-in-the-boxquot-sound-ver2-110924.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+
+var positionX = 0;
+var positionY = 0;
+var velocityX = 8;
+var velocityY = 9;
+
+
+var positionX2 = 30;
+var positionY2 = 0;
+var velocityX2 = 14;
+var velocityY2 = 17;
+
+var positionX3 = 0;
+var positionY3 = 0;
+var velocityX3 = 18;
+var velocityY3 = 12;
+
+var time = 30;
+var time2 = 40;
+var time3 = 50;
+
+var ball = document.getElementById('ball');
+var ball2 = document.getElementById('ball2');
+var ball3 = document.getElementById('ball3');
+
+const tinkAudio = document.getElementById('tinkAudio');
+
+var screenWidth = window.innerWidth;
+var screenHeight = window.innerHeight;
+
+function playTink() {
+  tinkAudio.currentTime = 0;
+  tinkAudio.play();
+}
+
+function moveBall() {
+  // Update the first ball's position
+  positionX += velocityX;
+  positionY += velocityY;
+
+  // Check if the ball reaches the left or right edge of the screen
+  if (positionX + ball.offsetWidth > screenWidth || positionX < 0) {
+    velocityX = -velocityX;
+    var randomColor = Math.floor(Math.random()*16777215).toString(16);
+    ball.style.background = "#" + randomColor;
+    playTink();
+  }
+
+  // Check if the ball reaches the top or bottom edge of the screen
+  if (positionY + ball.offsetHeight > screenHeight || positionY < 0) {
+    velocityY = -velocityY;
+    var randomColor = Math.floor(Math.random()*16777215).toString(16);
+    ball.style.background = "#" + randomColor;
+    playTink();
+  }
+
+  // Update the CSS properties of the first ball
+  ball.style.left = positionX + "px";
+  ball.style.top = positionY + "px";
+}
+
+function moveBall2() {
+  // Update the second ball's position
+  positionX2 += velocityX2;
+  positionY2 += velocityY2;
+
+  // Check if the ball reaches the left or right edge of the screen
+  if (positionX2 + ball2.offsetWidth > screenWidth || positionX2 < 0) {
+    velocityX2 = -velocityX2;
+    var randomColor2 = Math.floor(Math.random()*16777215).toString(16);
+    ball2.style.background = "#" + randomColor2;
+    playTink();
+  }
+
+  // Check if the ball reaches the top or bottom edge of the screen
+  if (positionY2 + ball2.offsetHeight > screenHeight || positionY2 < 0) {
+    velocityY2 = -velocityY2;
+    var randomColor2 = Math.floor(Math.random()*16777215).toString(16);
+    ball2.style.background = "#" + randomColor2;
+    playTink();
+  }
+
+  // Update the CSS properties of the second ball
+  ball2.style.left = positionX2 + "px";
+  ball2.style.top = positionY2 + "px";
+}
+
+
+function moveBall3() {
+  // Update the third ball's position
+  positionX3 += velocityX3;
+  positionY3 += velocityY3;
+
+  // Check if the ball reaches the left or right edge of the screen
+  if (positionX3 + ball3.offsetWidth > screenWidth || positionX3 < 0) {
+    velocityX3 = -velocityX3;
+    var randomColor3 = Math.floor(Math.random()*16777215).toString(16);
+    ball3.style.background = "#" + randomColor3;
+    playTink();
+  }
+
+  // Check if the ball reaches the top or bottom edge of the screen
+  if (positionY3 + ball3.offsetHeight > screenHeight || positionY3 < 0) {
+    velocityY3 = -velocityY3;
+    var randomColor3 = Math.floor(Math.random()*16777215).toString(16);
+    ball3.style.background = "#" + randomColor3;
+    playTink();
+  }
+
+  // Update the CSS properties of the third ball
+  ball3.style.left = positionX3 + "px";
+  ball3.style.top = positionY3 + "px";
+}
+
+
+// Call the moveBall function every `time` milliseconds
+setInterval(moveBall, time);
+setInterval(moveBall2, time2);
+setInterval(moveBall3, time3);
+</script>

@@ -2,8 +2,14 @@ function Spa() {
   return (
     <>
       <div className="header-section">
-        <img src="./mountainlogo.jpeg" className="bank-logo"></img>
-        <h1 className="bank-name">Rocky Mountain Bank</h1>
+        <a className="nav-link" href="/">
+          <img src="./mountainlogo.jpeg" className="bank-logo"></img>
+        </a>
+        <h1 className="bank-name">
+          <a className="nav-link" href="/">
+            Rocky Mountain Bank
+          </a>
+        </h1>
       </div>
       <div className="header-divider"></div>
 
@@ -18,6 +24,18 @@ function Spa() {
                 password: "secret",
                 balance: 100,
               },
+              {
+                name: "tom",
+                email: "tom@mit.edu",
+                password: "secret",
+                balance: 100,
+              },
+              {
+                name: "sandy",
+                email: "sandy@mit.edu",
+                password: "secret",
+                balance: 100,
+              },
             ],
           }}
         >
@@ -26,7 +44,7 @@ function Spa() {
             <Route path="/CreateAccount/" component={CreateAccount} />
             <Route path="/deposit/" component={Deposit} />
             <Route path="/withdraw/" component={Withdraw} />
-            <Route path="/balance/" component={Balance} />
+            {/* <Route path="/balance/" component={Balance} /> */}
             <Route path="/alldata/" component={AllData} />
             <Route path="/login/" component={Login} />
           </div>

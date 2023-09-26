@@ -4,9 +4,10 @@ function App() {
   const [staminokaBassData, setStaminokaBassData] = useState(null);
 
   useEffect(() => {
+    const userInput = 
     const fetchStaminokaBass = async () => {
       try {
-        const response = await fetch('https://botw-compendium.herokuapp.com/api/v3/compendium/entry/staminoka_bass');
+        const response = await fetch('https://botw-compendium.herokuapp.com/api/v3/compendium/entry/{userInput}');
         const data = await response.json();
         setStaminokaBassData(data);
       } catch (error) {
@@ -18,7 +19,7 @@ function App() {
   }, []);
 
   if (!staminokaBassData) {
-    return <div>Loading...</div>;
+    return <div className="loading">Loading...</div>;
   }
 
   const formattedLocations = staminokaBassData.data.common_locations.join(', ');

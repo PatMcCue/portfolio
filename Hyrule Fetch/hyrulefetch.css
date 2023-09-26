@@ -21,11 +21,16 @@
     /* Add other font properties as needed */
   }
 
-h1 {
+h1, .loading {
     display: flex;
     justify-content: center;
     font-family: "Hyrule";
     color: #0e5135;
+}
+
+.loading {
+    font-size: 3em;
+    margin-top: 20%;
 }
 
 

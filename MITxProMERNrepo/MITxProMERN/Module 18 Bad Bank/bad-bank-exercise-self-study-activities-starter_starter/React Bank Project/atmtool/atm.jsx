@@ -27,13 +27,14 @@ const Account = () => {
   let deposit = 0; // state of this transaction
   const [totalState, setTotalState] = React.useState(0);
   const [isDeposit, setIsDeposit] = React.useState(true);
+  const [activeButton, setActiveButton] = React.useState("deposit");
 
   let status = `Account Balance $ ${totalState} `;
-  console.log(`Account Rendered with isDeposit: ${isDeposit}`);
-  const handleChange = event => {
-    console.log(`handleChange ${event.target.value}`);
+
+  const handleChange = (event) => {
     deposit = Number(event.target.value);
   };
+
   const handleSubmit = (event) => {
     let newTotal = isDeposit ? totalState + deposit : totalState - deposit;
     setTotalState(newTotal);
@@ -48,11 +49,26 @@ const Account = () => {
     deposit = amount;
   };
 
+  const handleButtonClick = (type) => {
+    setIsDeposit(type === "deposit");
+    setActiveButton(type);
+  };
+
   return (
     <form onSubmit={handleSubmit}>
       <h2 id="total">{status}</h2>
-      <button onClick={() => setIsDeposit(true)} onChange={handleChange}>Deposit</button>
-      <button onClick={() => setIsDeposit(false)} onChange={handleChange}>Withdrawal</button>
+      <button
+        className={`btn ${activeButton === "deposit" ? "active-button" : ""}`}
+        onClick={() => handleButtonClick("deposit")}
+      >
+        Deposit
+      </button>
+      <button
+        className={`btn ${activeButton === "withdraw" ? "active-button" : ""}`}
+        onClick={() => handleButtonClick("withdraw")}
+      >
+        Withdrawal
+      </button>
       <ATMDeposit onChange={handleChange} isDeposit={isDeposit}></ATMDeposit>
       <PresetAmountButtons onAmountSelect={handleAmountSelect} />
     </form>

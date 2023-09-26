@@ -3,7 +3,6 @@ function Deposit(){
     const [show, setShow]         = React.useState(true);
     const [balance, setBalance]     = React.useState('');
     
-
     const ctx = React.useContext(UserContext); 
 
   return (
@@ -12,6 +11,3 @@ function Deposit(){
 }
 
 
-// states
-//balance
-//amount deposited

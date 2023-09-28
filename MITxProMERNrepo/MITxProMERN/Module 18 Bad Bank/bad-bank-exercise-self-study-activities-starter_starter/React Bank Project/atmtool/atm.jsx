@@ -11,6 +11,7 @@ const PresetAmountButtons = ({ onAmountSelect }) => {
     </div>
   );
 };
+
 const ATMDeposit = ({ onChange, isDeposit }) => {
   const choice = ["Deposit", "Cash Back"];
   console.log(`ATM isDeposit: ${isDeposit}`);
